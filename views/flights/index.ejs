@@ -1,12 +1,34 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <body>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width>, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+    <title>flights</title>
 </head>
-<body>
-    <h1>Welcome to mongo flights</h1>
-</body>
+    <table id = "list">
+        <thead>
+            <a href = "/flights/new">Add Flights</a>
+            <a href = "/">Home Page</a>
+            <tr>
+                <th>Airline</th>
+                <th>FlightNo</th>
+                <th>Departs</th>
+                <th>Airport</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% flights.forEach(function(f) { %>
+                <tr>
+                    <td><%= f.airline %></td>
+                    <td><%= f.flightNo %></td>
+                    <td><%= f.departs %></td>
+                    <td><%= f.airport %></td>
+                    <td><a href = "/flights/<%= f._id %>">Details</a></td>
+                </tr>
+            <% }); %>
+        </tbody>
+     </table>
+    </body>
 </html>
