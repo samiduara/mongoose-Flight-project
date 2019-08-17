@@ -8,8 +8,9 @@ const logger = require('morgan');
 
 require('./config/database');
 
-const flightsRouter = require('./routes/flights');
 const indexRouter = require('./routes/index');
+const flightsRouter = require('./routes/flights');
+const destinationRouter = require('./routes/destinations');
 
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
@@ -20,6 +21,7 @@ app.use(cookieParser());
 
 app.use('/', indexRouter);
 app.use('/flights', flightsRouter);
+app.use('/', destinationRouter);
 
 app.use(function(req, res, next){
     next(createError(404));
