@@ -10,11 +10,19 @@
     <h1><%= title %></h1>
     <a href="/">Go Back Home</a>
     <a href="/flights">Back to all Flights</a>
+    <a href="/flights/<%= flight.id %>/tickets/new">Add a Ticket to this flight</a>
     <hr>
     <h3><%= flight.airline %></h3>
     <p><%= flight.flightNo %></p>
     <p><%= flight.departs %></p>
     <p><%= flight.airport %></p>
+    
+    <h5>Tickets Associated With This Flight</h5>
+    <% tickets.forEach(function(t) { %>
+        <p><%= t.seat %></p>
+        <p>$<%= t.price%></p>
+    <% }) %>
+
     <% if(flight.destinations.length > 0) { %>
         <% flight.destinations.forEach(function(d) { %>
             <p><%= d.airport %></p>
