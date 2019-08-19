@@ -11,5 +11,9 @@ router.get('/new', flightCtlr.new);
 // POST /flights 
 
 router.post('/', flightCtlr.create);
+router.get("/:id",flightCtlr.show);
 
-module.exports = router;
+
+
+
+module.exports = router

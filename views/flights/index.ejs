@@ -1,34 +1,24 @@
+    
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <body>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>flights</title>
+    <title>Here's all the flights</title>
 </head>
-    <table id = "list">
-        <thead>
-            <a href = "/flights/new">Add Flights</a>
-            <a href = "/">Home Page</a>
-            <tr>
-                <th>Airline</th>
-                <th>FlightNo</th>
-                <th>Departs</th>
-                <th>Airport</th>
-            </tr>
-        </thead>
-        <tbody>
-            <% flights.forEach(function(f) { %>
-                <tr>
-                    <td><%= f.airline %></td>
-                    <td><%= f.flightNo %></td>
-                    <td><%= f.departs %></td>
-                    <td><%= f.airport %></td>
-                    <td><a href = "/flights/<%= f._id %>">Details</a></td>
-                </tr>
-            <% }); %>
-        </tbody>
-     </table>
-    </body>
+<body>
+    <h1>Here's all the flights</h1>
+
+    <a href="/flights/new">Add a New Flight to the List</a>
+    <a href="/">Go Back Home</a>
+
+    <% flights.forEach(function(flight) { %>
+        <p>
+            <%= flight.airline %> | <%= flight.airport %> | 
+            <%= flight.flightNo %> | <%= flight.departs %> |
+            <a href="/flights/<%= flight._id %>">Details</a>
+        </p>
+   <% }) %>
+</body>
 </html>

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title><%= title %></title>
+</head>
+<body>
+    <h1><%= title %></h1>
+    <a href="/">Go Back Home</a>
+    <a href="/flights">Back to all Flights</a>
+    <hr>
+    <h3><%= flight.airline %></h3>
+    <p><%= flight.flightNo %></p>
+    <p><%= flight.departs %></p>
+    <p><%= flight.airport %></p>
+    <% if(flight.destinations.length > 0) { %>
+        <% flight.destinations.forEach(function(d) { %>
+            <p><%= d.airport %></p>
+            <p><%= d.arrival %></p>
+        <% }) %>
+    <% } else { %>
+        <p>There are no destinations for this flight</p>
+    <% } %>
+    <form action="/flights/<%= flight._id %>/destinations" method="POST">
+        <select name="airport">
+            <option value="SEA">SEA</option>
+            <option value="DAL">DAL</option>
+            <option value="LAX">LAX</option>
+            <option value="AUS">AUS</option>
+        </select>
+        <input type="datetime-local" name="arrival">
+        <input type="submit" value="Add Destination">
+    </form>
+</body>
+</html>
