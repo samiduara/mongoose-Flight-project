@@ -1,13 +1,19 @@
 var Flight = require('../models/flight');
 
 module.exports = {
-create,
-}
+    create
+};
+
 function create(req, res) {
-    Flight.findById(req.params.id, function(err, flight){
-        flight.destinations.push(req.body);
-            flight.save(function(err){
-            res.redirect(`/flights${flight._id}`);
-        });
-    });
- }
+    Flight.findById(req.params.id, function (err, flightData) {
+
+        flightData.destinations.push(req.body);
+
+        flightData.save(function (err) {
+            res.render('flights/show', {
+                flightData
+            });
+
+        })
+    })
+}
